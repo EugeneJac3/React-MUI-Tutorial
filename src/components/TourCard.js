@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import { AccessTime } from "@mui/icons-material";
 import {createTheme, ThemeProvider} from "@mui/material";
 
+
 const theme = createTheme({
     components: {
         MuiTypography: {
@@ -31,15 +32,15 @@ const theme = createTheme({
     },
 });
 
-const TourCard = () => {
+const TourCard = ({tour}) => {
   return (
     <Grid item xs={3}>
         <ThemeProvider theme={theme}>
       <Paper elevation={3}>
-        <img src="./image/mountainLake.jpg" alt="mountains" className="img" />
+        <img src={tour.image} alt="mountains" className="img" />
         <Box paddingX={1}>
           <Typography variant="subtitle1" component="h2">
-            Immerse into the Lake
+            {tour.name}
           </Typography>
           <Box
             sx={{
@@ -49,7 +50,7 @@ const TourCard = () => {
           >
             <AccessTime sx={{ width: 12.5 }} />
             <Typography variant="body2" component="p" marginLeft={0.5}>
-              5 hours
+              {tour.duration} hours
             </Typography>
           </Box>
           <Box
@@ -66,15 +67,15 @@ const TourCard = () => {
              precision={0.5} 
              size="small"/>
             <Typography variant="body2" component="p" marginLeft={0.5}>
-            4.5
+            {tour.rating}
             </Typography>
             <Typography variant="body3" component="p" marginLeft={1.5}>
-            (655 reviews)
+            ({tour.numberOfReviews} reviews)
             </Typography>
           </Box>
           <Box>
           <Typography variant="h6" component="h3" marginTop={0}>
-            From USD $147
+            From ${tour.price}
             </Typography>
           </Box>
         </Box>
